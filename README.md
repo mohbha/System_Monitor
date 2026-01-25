@@ -41,11 +41,11 @@ The easiest way to run the agent is via Docker.
 
 2.  **Run the Container**
     ```bash
-    docker run -d -p 5000:5000 --name my-monitor system-monitor
+    docker run -d -p 8000:8000 --name my-monitor system-monitor
     ```
 
 3.  **Check Health**
-    Visit `http://localhost:5000/metrics` to see real-time data.
+    Visit `http://localhost:8000/metrics` to see real-time data.
 
 ---
 
