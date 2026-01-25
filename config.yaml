@@ -1,0 +1,14 @@
+system:
+  update_interval: 5
+  log_location: "app.log"
+
+logging:
+  max_bytes: 5242880
+  backup_count: 3
+
+alerts:
+  cpu_threshold: 80      # Alert if CPU usage > 80%
+  memory_threshold: 80   # Alert if Memory usage > 80%
+  disk_threshold: 90     # Alert if Disk usage > 90%
+  enable_email: false    # Toggle features easily
+  enable_slack: false    # Toggle features easily
