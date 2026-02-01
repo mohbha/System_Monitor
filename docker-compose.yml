@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # 1. Your Python App
+  system-monitor:
+    build: .
+    container_name: system-monitor
+    ports:
+      # CHANGED: Map Mac 8000 -> Container 8000 (Since your code runs on 8000)
+      - "8000:8000"
+    networks:
+      - monitoring-net
+
+  # 2. Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - monitoring-net
+
+  # 3. Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring-net
+
+networks:
+  monitoring-net:
+    driver: bridge
